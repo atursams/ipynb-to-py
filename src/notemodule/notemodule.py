@@ -102,9 +102,12 @@ def ipynb_to_py(notebook_path,
 def all_ipynb_to_py(root_path='.', dest_path='module', init_py=True):
     if init_py:
         os.makedirs(dest_path, exist_ok=True)
-        f = open(os.path.join(dest_path, '__init__.py'), 'w')
-        if type(init_py) is str: 
-            f.write(init_py)
+        init_file_path = os.path.join(dest_path, '__init__.py')
+        if os.path.exists(init_file_path):
+            os.remove(init_file_path)
+        with open(init_file_path, 'w') as f:
+            if type(init_py) is str: 
+                f.write(init_py)
     for root, dirs, files in os.walk(root_path):
         dirs[:] = [a_dir for a_dir in dirs
                    if not a_dir.startswith('.')
