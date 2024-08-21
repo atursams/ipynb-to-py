@@ -1,0 +1,3 @@
+# src/notemodule/__init__.py
+
+from .notemodule import meth_a, meth_b

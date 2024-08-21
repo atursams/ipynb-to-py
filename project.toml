@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notemodule"
+version = "0.1.0"
+description = "Convert Jupyter notebooks to python modules (and import them into your code)"
+authors = [
+    { name="Atur Sams", email="atursams@gmail.com" }
+]
+license = { text = "MIT" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
