@@ -68,11 +68,11 @@ def ipynb_to_py(notebook_path,
         return
     
     # Load the notebook
-    print(f'{notebook_path=}')
     with open(notebook_path, 'r', encoding='utf-8') as fh:
         nb = nbformat.read(fh, as_version=4)
 
-    if not should_convernt_to_module(nb.cells[0].source):
+    if not nb.cells or not should_convernt_to_module(nb.cells[0].source):
+        print('!')
         return
     
     if type(dont_comment) is str:
@@ -97,6 +97,7 @@ def ipynb_to_py(notebook_path,
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as code_file:
         code_file.write(output)
+    return output_path
 
 
 def all_ipynb_to_py(root_path='.', dest_path='module', init_py=True):
@@ -117,5 +118,7 @@ def all_ipynb_to_py(root_path='.', dest_path='module', init_py=True):
                     if a_file.endswith('.ipynb')]
         for a_file in files:
             notebook_path = os.path.join(root, a_file)
-            ipynb_to_py(notebook_path, dest_path)
+            out_path = ipynb_to_py(notebook_path, dest_path)
+            if out_path:
+                print(f'compiled {out_path}')
 

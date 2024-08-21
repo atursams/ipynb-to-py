@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "notemodule"
-version = "0.1.3"
+version = "0.1.4"
 description = "Convert Jupyter notebooks to python modules (and import them into your code)"
 authors = [
     { name="Atur Sams", email="atursams@gmail.com" }
