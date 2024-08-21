@@ -10,6 +10,9 @@ authors = [
     { name="Atur Sams", email="atursams@gmail.com" }
 ]
 license = { text = "MIT" }
+dependencies = [
+    "nbformat"
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
